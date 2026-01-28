@@ -1,0 +1,24 @@
+name: StaticFlow CI
+
+on:
+  push:
+    branches: [ "main", "staging" ]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t staticflow:${{ github.sha }} .
+
+      - name: Run smoke test
+        run: |
+          docker run -d --name sf -p 8080:80 staticflow:${{ github.sha }}
+          sleep 3
+          curl -f http://localhost:8080
+          docker rm -f sf
