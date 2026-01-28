@@ -1,4 +1,15 @@
 {
+  "environment": "production",
+  "platform": "vercel",
+  "version": "main",
+  "deployed_at": "updated by git push",
+  "changelog": [
+    "Deployed to Vercel (production)",
+    "CI builds Docker image and runs smoke test",
+    "Next: add Coolify self-hosted deployment"
+  ]
+}
+{
   "environment": "local",
   "platform": "localhost",
   "version": "dev",
