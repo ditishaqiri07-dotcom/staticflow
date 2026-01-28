@@ -124,7 +124,7 @@
 
   <script>
     async function loadStatus() {
-      const res = await fetch('./status.json', { cache: 'no-store' });
+      const res = await fetch('/status.json', { cache: 'no-store' });
       const data = await res.json();
 
       document.getElementById('env').textContent = data.environment;
