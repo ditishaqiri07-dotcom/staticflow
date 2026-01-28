@@ -11,7 +11,10 @@
     <div class="hero">
       <div>
         <h1>StaticFlow</h1>
-        <p>Static site + GitOps CI/CD demo. This site is deployed two ways: Vercel (PaaS) and Coolify (self-hosted) using Docker + Nginx.</p>
+        <p>
+          Static site + GitOps CI/CD demo. This site is deployed two ways:
+          Vercel (PaaS) and Coolify (self-hosted) using Docker + Nginx.
+        </p>
       </div>
 
       <div class="badges">
@@ -36,7 +39,11 @@
   <div class="container grid">
     <section id="deployments" class="card">
       <h2>Deployment status</h2>
-      <p>This section is generated from <code>site/status.json</code>. Later, GitHub Actions will update it automatically on every deploy.</p>
+      <p>
+        This section is generated from <code>site/status.json</code>.
+        It is updated automatically via Git (GitOps).
+      </p>
+
       <div class="kpi">
         <div>
           <strong id="env">loading…</strong>
@@ -63,7 +70,10 @@
         <li>loading…</li>
       </ul>
 
-      <p class="small">Tip: when you deploy staging vs production, this will clearly show which environment is live.</p>
+      <p class="small">
+        Tip: when staging vs production is deployed, this clearly shows
+        which environment is live.
+      </p>
     </section>
 
     <aside class="cards">
@@ -82,22 +92,28 @@
         <h3>Vercel (PaaS)</h3>
         <p>Fast global CDN, deploy directly from Git.</p>
         <h3>Coolify (Self-hosted)</h3>
-        <p>Deploy Docker images on your own server (more control).</p>
+        <p>Deploy Docker images on your own server.</p>
       </section>
 
       <section id="perf" class="card">
         <h2>Performance plan</h2>
         <ul>
           <li>TTFB + total load time via <code>curl</code></li>
-          <li>Lighthouse Performance score</li>
+          <li>Lighthouse performance score</li>
           <li>Compare Vercel vs Coolify results</li>
         </ul>
       </section>
 
       <section class="card">
         <h2>Project repo</h2>
-        <p>Add your GitHub repo link here once created.</p>
-        <p class="small">This page is intentionally simple so the automation is the “main” achievement.</p>
+        <p>
+          <a href="https://github.com/ditishaqiri07-dotcom/staticflow" target="_blank">
+            View on GitHub
+          </a>
+        </p>
+        <p class="small">
+          This page is intentionally simple so automation is the main focus.
+        </p>
       </section>
     </aside>
   </div>
@@ -108,7 +124,7 @@
 
   <script>
     async function loadStatus() {
-      const res = await fetch('status.json', { cache: 'no-store' });
+      const res = await fetch('./status.json', { cache: 'no-store' });
       const data = await res.json();
 
       document.getElementById('env').textContent = data.environment;
@@ -124,75 +140,16 @@
         ul.appendChild(li);
       }
     }
+
     loadStatus().catch(() => {
       document.getElementById('env').textContent = 'error';
       document.getElementById('version').textContent = 'error';
       document.getElementById('deployedAt').textContent = 'error';
       document.getElementById('platform').textContent = 'error';
-      document.getElementById('changelog').innerHTML = '<li>Could not load status.json</li>';
+      document.getElementById('changelog').innerHTML =
+        '<li>Could not load status.json</li>';
     });
   </script>
-</body>
-</html>
- <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>StaticFlow</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <header class="container">
-    <h1>StaticFlow</h1>
-    <p>GitOps-powered automated static site deployment with containerized delivery.</p>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#pipeline">Pipeline</a>
-      <a href="#platforms">Platforms</a>
-      <a href="#perf">Performance</a>
-    </nav>
-  </header>
-
-  <main class="container">
-    <section id="features" class="card">
-      <h2>What it demonstrates</h2>
-      <ul>
-        <li>Static site built with HTML/CSS</li>
-        <li>Docker + Nginx container delivery</li>
-        <li>GitHub Actions CI/CD</li>
-        <li>Deploy to Vercel + Coolify</li>
-        <li>GitOps promotion between environments</li>
-        <li>Performance comparison</li>
-      </ul>
-    </section>
-
-    <section id="pipeline" class="card">
-      <h2>GitOps pipeline</h2>
-      <ol>
-        <li>Commit → CI builds + tests</li>
-        <li>CI builds Docker image</li>
-        <li>CI deploys to staging</li>
-        <li>Promotion via Git tag/release</li>
-      </ol>
-    </section>
-
-    <section id="platforms" class="card grid">
-      <div>
-        <h3>Vercel (PaaS)</h3>
-        <p>Fast global CDN, simple deploy from Git.</p>
-      </div>
-      <div>
-        <h3>Coolify (Self-hosted)</h3>
-        <p>Deploy Docker images on your own server.</p>
-      </div>
-    </section>
-
-    <section id="perf" class="card">
-      <h2>Performance</h2>
-      <p>We’ll measure TTFB, total load time, and Lighthouse score for each platform.</p>
-    </section>
-  </main>
-
-  <footer class="container footer">
-    <small>© StaticFlow</small>
-  </footer>
 </body>
 </html>
 
