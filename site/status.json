@@ -1,0 +1,11 @@
+{
+  "environment": "local",
+  "platform": "localhost",
+  "version": "dev",
+  "deployed_at": "not deployed yet",
+  "changelog": [
+    "Initial site created",
+    "Added Docker + Nginx container delivery",
+    "Added deployment status + changelog panel"
+  ]
+}
